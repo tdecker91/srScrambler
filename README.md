@@ -16,7 +16,7 @@ bower install --save srScrambler
 
 Include scrambler.js in your web page.
 ```html
-<script type="text/javascript" src="./path/to/timer.js" />
+<script type="text/javascript" src="./path/to/scrambler.js" />
 ```
 
 Generate a scramble by calling the generateScramble method, passing in the number of layers in the cube and the number of turns you want in the scramble. This returns an array of turns which may or may not be helpful to you.
