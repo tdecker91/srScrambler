@@ -33,3 +33,5 @@ declare namespace SRScrambler {
     Clockwise = ''
   }
 }
+
+export = SRScrambler

@@ -12,7 +12,7 @@ bower install --save sr-scrambler
 
 Import the module
 ```javascript
-import SRScrambler from 'sr-scrambler'
+import * as SRScrambler from 'sr-scrambler'
 ```
 
 Generate a scramble by calling the generateScramble method, passing in the number of layers in the cube and the number of turns you want in the scramble. This returns an array of turns which may or may not be helpful to you.
