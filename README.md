@@ -5,7 +5,7 @@ This script was made to power the cube scrambler for http://www.solvingrubik.com
 ## Instalation
 Install the package using npm
 ```bash
-bower install --save sr-scrambler
+npm install --save sr-scrambler
 ```
 
 ## Usage
