@@ -1,6 +1,11 @@
 # srScrambler
-Javascript class to generate scrambles for any size nxn Rubik's cube. Scrambles can be generated to display on html pages. The scrambler efficiently generates sequences. For example F and F' will not appear next to eachother in scramble.
-This script was made to power the cube scrambler for http://www.solvingrubik.com/timer
+Tool to generate scrambles for various twisty puzzles. This is not an official WCA scrambler. But this is very simple and should be good enough for casual scrambles.
+
+- Rubiks Cube (NxN)
+- Skewb
+- Pyraminx
+- Megaminx
+- Square1
 
 ## Instalation
 Install the package using npm
@@ -12,16 +17,36 @@ npm install --save sr-scrambler
 
 Import the module
 ```javascript
-import * as SRScrambler from 'sr-scrambler'
+import * as Scrambler from 'sr-scrambler'
 ```
 
-Generate a scramble by calling the generateScramble method, passing in the number of layers in the cube and the number of turns you want in the scramble. This returns an array of turns which may or may not be helpful to you.
-
+Generate a scramble by invoking the method for the puzzle you want;
 ```javascript
-var scramble = SRScrambler.generateScramble(3, 30);
+// U' B L2 F L2 D2 B D' B' ...
+let cubeScramble = Scrambler.cube();
+
+// D++ R++ D-- R++ D++ R++ ...
+let megaminxScramble = Scrambler.megaminx();
+
+// U R' U R' L R' L U' R' U r' l' b
+let pyraminxScramble = Scrambler.pyraminx();
+
+// U' B L' R L B L' B' U
+let skewbScramble = Scrambler.skewb();
+
+// (0, -1) / (3, 4) / (-3, 0) / (3, -3) ...
+let square1Scramble = Scrambler.square1();
 ```
 
-HTML friendly scrambles can also be generated so the scramble can be displayed on a web page.
+Cube scrambles can be generated for larger puzzles
 ```javascript
-var scramble = SRScrambler.generateHtmlScramble(3, 30);
+let cubeSize = 5 // 5x5
+let scrambleSize = 30
+let cubeScramble = Scrambler.cube(cubeSize, scrambleSize);
+```
+
+Other scrambles can be generated longer or smaller by providing a scramble size
+```javascript
+// U' B R' B U' B' R' B' R' B R' L U B R'
+let skewbScramble = Scrambler.skewb(15);
 ```
