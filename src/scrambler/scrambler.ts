@@ -171,16 +171,10 @@ export const generateSquare1Scramble = (numTurns: number = 12) => {
     while (turns != 0) {
       if (turns < 0) {
         let piece = bottom.shift();
-        if (piece > (-turns)) {
-          throw Error("breaking")
-        }
         turns += piece;
         bottom.push(piece);
       } else if (turns > 0) {
         let piece = bottom.pop();
-        if (piece > turns) {
-          throw Error("breaking2")
-        }
         turns -= piece;
         bottom.unshift(piece);
       }

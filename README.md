@@ -1,5 +1,5 @@
 # srScrambler
-Tool to generate scrambles for various twisty puzzles. This is not an official WCA scrambler. But this is very simple and should be good enough for casual scrambles.
+Tool to generate scrambles for various twisty puzzles. ***This is not an official WCA scrambler.*** srScrambler won't generate scrambles with canceling moves, but it is still a naive scramble implemenation. But good enough for casual use. 
 
 - Rubiks Cube (NxN)
 - Skewb
