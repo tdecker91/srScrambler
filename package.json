@@ -1,6 +1,6 @@
 {
   "name": "sr-scrambler",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "utilitiy to generate scrambles for twisty puzzles (rubiks cube, megaminx, pyraminx, skewb, square1)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

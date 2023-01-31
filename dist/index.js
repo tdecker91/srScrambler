@@ -1,2 +1,426 @@
-!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["sr-scrambler"]=t():e["sr-scrambler"]=t()}(self,(function(){return(()=>{"use strict";var e,t,o,r={d:(e,t)=>{for(var o in t)r.o(t,o)&&!r.o(e,o)&&Object.defineProperty(e,o,{enumerable:!0,get:t[o]})},o:(e,t)=>Object.prototype.hasOwnProperty.call(e,t),r:e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})}},l={};function n(e){return!Array.isArray(e)||e.length<1?null:e[Math.floor(Math.random()*e.length)]}r.r(l),r.d(l,{cube:()=>p,megaminx:()=>a,pyraminx:()=>c,skewb:()=>h,square1:()=>d}),function(e){e.X="x",e.Y="y",e.Z="z"}(e||(e={})),function(e){e.L="L",e.R="R",e.U="U",e.D="D",e.F="F",e.B="B"}(t||(t={})),function(e){e.Double="2",e.CounterClockwise="'",e.Clockwise=""}(o||(o={}));const i=(e,t,o,r,l)=>{let i,s,f=[];for(var u=0;u<l;u++){do{s=n(e)}while(t[i]===t[s]);f.push({face:s,depth:Math.floor(Math.random()*r)+1,modifier:n(o)}),i=s}return f},s=["D","R"],f=["++","--"],u=e=>e.map((e=>Array.isArray(e)?u(e)+"\n":(e=>{const t=e.depth>2?`${e.depth}`:"",o=e.depth>1?"w":"";return`${t}${e.face}${o}${e.modifier}`})(e))).join(" "),p=(r=3,l=21)=>u(((r=3,l=21)=>i([t.L,t.R,t.U,t.D,t.F,t.B],{[t.L]:e.X,[t.R]:e.X,[t.U]:e.Y,[t.D]:e.Y,[t.F]:e.Z,[t.B]:e.Z},[o.Double,o.CounterClockwise,o.Clockwise],Math.floor(r/2),l))(r,l)),a=()=>u(((e=10,t=6)=>{let o=[];for(let r=0;r<t;r++){o[r]=[];for(let t=0;t<e;t++)o[r].push({face:s[t%s.length],modifier:n(f),depth:1});o[r].push({face:"U",modifier:n(["","'"]),depth:1})}return o})()),c=e=>u(((e=10)=>{let r=i([t.L,t.R,t.U,t.B],{[t.L]:"L",[t.R]:"R",[t.U]:"U",[t.B]:"B"},[o.CounterClockwise,o.Clockwise],1,e);var l;return(l=["l","r","u","b"],l.map((e=>({value:e,sort:Math.random()}))).sort(((e,t)=>e.sort-t.sort)).map((({value:e})=>e))).forEach((e=>{let t=n([o.Clockwise,o.CounterClockwise,null]);null!=t&&r.push({face:e,modifier:t,depth:1})})),r})(e)),h=e=>u(((e=9)=>i([t.L,t.R,t.U,t.B],{[t.L]:"L",[t.R]:"R",[t.U]:"U",[t.B]:"B"},[o.CounterClockwise,o.Clockwise],1,e))(e)),d=e=>((e=12)=>{let t=[2,1,2,1,2,1,2,1],o=[1,2,1,2,1,2,1,2];const r=e=>{for(;0!=e;)if(e<0){let o=t.shift();e+=o,t.push(o)}else if(e>0){let o=t.pop();e-=o,t.unshift(o)}},l=e=>{for(;0!=e;)if(e<0){let t=o.shift();e+=t,o.push(t)}else if(e>0){let t=o.pop();e-=t,o.unshift(t)}},i=()=>{let e=0,r=0,l=0;for(let o=t.length;o>0&&l<6;o--)l+=t[o-1],e++;l=0;for(let e=0;e<o.length&&l<6;e++)l+=o[e],r++;const n=t.splice(t.length-e,t.length),i=o.splice(0,r);t=t.concat(i),o=n.concat(o)},s=e=>{let t=0;for(let o=0;o<e.length&&t<6;o++)if(t+=e[o],t>6)return!1;return!0},f=(e,t)=>{if(t<0){for(;t<0;){let o=e.shift();if(o>Math.abs(t))return!1;t+=o,e.push(o)}return s(e)}if(t>0){for(;t>0;){let o=e.pop();if(t<o)return!1;t-=o,e.unshift(o)}return s(e)}return!0},u=()=>{let e=[],r=[];for(let l=-6;l<=6;l++)f([...t],l)&&e.push(l),f([...o],l)&&r.push(l);return{possibleTop:e,possibleBottom:r}};let p=[];for(let t=0;t<e;t++){let e=u(),t=0,o=0;do{t=n(e.possibleTop),o=n(e.possibleBottom)}while(0===t&&0===o);p.push({top:t,bottom:o}),r(t),l(o),i()}return p})(e).map((e=>` (${e.top}, ${e.bottom}) /`)).join("");return l})()}));
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["sr-scrambler"] = factory();
+	else
+		root["sr-scrambler"] = factory();
+})(self, () => {
+return /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/enums.ts":
+/*!**********************!*\
+  !*** ./src/enums.ts ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CubePlane": () => (/* binding */ CubePlane),
+/* harmony export */   "Modifier": () => (/* binding */ Modifier),
+/* harmony export */   "Side": () => (/* binding */ Side)
+/* harmony export */ });
+var CubePlane;
+(function (CubePlane) {
+    CubePlane["X"] = "x";
+    CubePlane["Y"] = "y";
+    CubePlane["Z"] = "z";
+})(CubePlane || (CubePlane = {}));
+var Side;
+(function (Side) {
+    Side["L"] = "L";
+    Side["R"] = "R";
+    Side["U"] = "U";
+    Side["D"] = "D";
+    Side["F"] = "F";
+    Side["B"] = "B";
+})(Side || (Side = {}));
+var Modifier;
+(function (Modifier) {
+    Modifier["Double"] = "2";
+    Modifier["CounterClockwise"] = "'";
+    Modifier["Clockwise"] = "";
+})(Modifier || (Modifier = {}));
+
+
+/***/ }),
+
+/***/ "./src/scrambler/scrambler.ts":
+/*!************************************!*\
+  !*** ./src/scrambler/scrambler.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "generateCubeScramble": () => (/* binding */ generateCubeScramble),
+/* harmony export */   "generateMegaminxScramble": () => (/* binding */ generateMegaminxScramble),
+/* harmony export */   "generatePyraminxScramble": () => (/* binding */ generatePyraminxScramble),
+/* harmony export */   "generateSkewbScramble": () => (/* binding */ generateSkewbScramble),
+/* harmony export */   "generateSquare1Scramble": () => (/* binding */ generateSquare1Scramble)
+/* harmony export */ });
+/* harmony import */ var _enums__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../enums */ "./src/enums.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util */ "./src/util.ts");
+
+
+const generateScramble = (faces, planeMapping, modifiers, maxDepth, numTurns) => {
+    let turns = [];
+    let previousTurn;
+    let newTurn;
+    for (var i = 0; i < numTurns; i++) {
+        do {
+            newTurn = (0,_util__WEBPACK_IMPORTED_MODULE_1__.randomElement)(faces);
+        } while (planeMapping[previousTurn] === planeMapping[newTurn]);
+        turns.push({
+            face: newTurn,
+            depth: Math.floor(Math.random() * maxDepth) + 1,
+            modifier: (0,_util__WEBPACK_IMPORTED_MODULE_1__.randomElement)(modifiers)
+        });
+        previousTurn = newTurn;
+    }
+    return turns;
+};
+const generateCubeScramble = (size = 3, numTurns = 21) => {
+    return generateScramble([_enums__WEBPACK_IMPORTED_MODULE_0__.Side.L, _enums__WEBPACK_IMPORTED_MODULE_0__.Side.R, _enums__WEBPACK_IMPORTED_MODULE_0__.Side.U, _enums__WEBPACK_IMPORTED_MODULE_0__.Side.D, _enums__WEBPACK_IMPORTED_MODULE_0__.Side.F, _enums__WEBPACK_IMPORTED_MODULE_0__.Side.B], {
+        [_enums__WEBPACK_IMPORTED_MODULE_0__.Side.L]: _enums__WEBPACK_IMPORTED_MODULE_0__.CubePlane.X,
+        [_enums__WEBPACK_IMPORTED_MODULE_0__.Side.R]: _enums__WEBPACK_IMPORTED_MODULE_0__.CubePlane.X,
+        [_enums__WEBPACK_IMPORTED_MODULE_0__.Side.U]: _enums__WEBPACK_IMPORTED_MODULE_0__.CubePlane.Y,
+        [_enums__WEBPACK_IMPORTED_MODULE_0__.Side.D]: _enums__WEBPACK_IMPORTED_MODULE_0__.CubePlane.Y,
+        [_enums__WEBPACK_IMPORTED_MODULE_0__.Side.F]: _enums__WEBPACK_IMPORTED_MODULE_0__.CubePlane.Z,
+        [_enums__WEBPACK_IMPORTED_MODULE_0__.Side.B]: _enums__WEBPACK_IMPORTED_MODULE_0__.CubePlane.Z
+    }, [
+        _enums__WEBPACK_IMPORTED_MODULE_0__.Modifier.Double,
+        _enums__WEBPACK_IMPORTED_MODULE_0__.Modifier.CounterClockwise,
+        _enums__WEBPACK_IMPORTED_MODULE_0__.Modifier.Clockwise
+    ], Math.floor(size / 2), numTurns);
+};
+const pochmanFaces = ['D', 'R'];
+const pochmanModifiers = ['++', '--'];
+/**
+ * generates a pochman scramble for the megaminx
+ */
+const generateMegaminxScramble = (sequenceLength = 10, numSequences = 6) => {
+    let turns = [];
+    for (let i = 0; i < numSequences; i++) {
+        turns[i] = [];
+        for (let j = 0; j < sequenceLength; j++) {
+            turns[i].push({
+                face: pochmanFaces[j % pochmanFaces.length],
+                modifier: (0,_util__WEBPACK_IMPORTED_MODULE_1__.randomElement)(pochmanModifiers),
+                depth: 1
+            });
+        }
+        turns[i].push({
+            face: 'U',
+            modifier: (0,_util__WEBPACK_IMPORTED_MODULE_1__.randomElement)(['', '\'']),
+            depth: 1
+        });
+    }
+    return turns;
+};
+const generateSkewbScramble = (numTurns = 9) => {
+    return generateScramble([_enums__WEBPACK_IMPORTED_MODULE_0__.Side.L, _enums__WEBPACK_IMPORTED_MODULE_0__.Side.R, _enums__WEBPACK_IMPORTED_MODULE_0__.Side.U, _enums__WEBPACK_IMPORTED_MODULE_0__.Side.B], {
+        [_enums__WEBPACK_IMPORTED_MODULE_0__.Side.L]: 'L',
+        [_enums__WEBPACK_IMPORTED_MODULE_0__.Side.R]: 'R',
+        [_enums__WEBPACK_IMPORTED_MODULE_0__.Side.U]: 'U',
+        [_enums__WEBPACK_IMPORTED_MODULE_0__.Side.B]: 'B'
+    }, [
+        _enums__WEBPACK_IMPORTED_MODULE_0__.Modifier.CounterClockwise,
+        _enums__WEBPACK_IMPORTED_MODULE_0__.Modifier.Clockwise
+    ], 1, numTurns);
+};
+const generatePyraminxScramble = (numTurns = 10) => {
+    let turns = generateScramble([_enums__WEBPACK_IMPORTED_MODULE_0__.Side.L, _enums__WEBPACK_IMPORTED_MODULE_0__.Side.R, _enums__WEBPACK_IMPORTED_MODULE_0__.Side.U, _enums__WEBPACK_IMPORTED_MODULE_0__.Side.B], {
+        [_enums__WEBPACK_IMPORTED_MODULE_0__.Side.L]: 'L',
+        [_enums__WEBPACK_IMPORTED_MODULE_0__.Side.R]: 'R',
+        [_enums__WEBPACK_IMPORTED_MODULE_0__.Side.U]: 'U',
+        [_enums__WEBPACK_IMPORTED_MODULE_0__.Side.B]: 'B'
+    }, [
+        _enums__WEBPACK_IMPORTED_MODULE_0__.Modifier.CounterClockwise,
+        _enums__WEBPACK_IMPORTED_MODULE_0__.Modifier.Clockwise
+    ], 1, numTurns);
+    (0,_util__WEBPACK_IMPORTED_MODULE_1__.shuffle)(['l', 'r', 'u', 'b'])
+        .forEach(point => {
+        let modifier = (0,_util__WEBPACK_IMPORTED_MODULE_1__.randomElement)([_enums__WEBPACK_IMPORTED_MODULE_0__.Modifier.Clockwise, _enums__WEBPACK_IMPORTED_MODULE_0__.Modifier.CounterClockwise, null]);
+        if (modifier != null) {
+            turns.push({
+                face: point,
+                modifier: modifier,
+                depth: 1
+            });
+        }
+    });
+    return turns;
+};
+const generateSquare1Scramble = (numTurns = 12) => {
+    let tops = [2, 1, 2, 1, 2, 1, 2, 1];
+    let bottom = [1, 2, 1, 2, 1, 2, 1, 2];
+    const turnTop = (turns) => {
+        while (turns != 0) {
+            if (turns < 0) {
+                let piece = tops.shift();
+                turns += piece;
+                tops.push(piece);
+            }
+            else if (turns > 0) {
+                let piece = tops.pop();
+                turns -= piece;
+                tops.unshift(piece);
+            }
+        }
+    };
+    const turnBottom = (turns) => {
+        while (turns != 0) {
+            if (turns < 0) {
+                let piece = bottom.shift();
+                turns += piece;
+                bottom.push(piece);
+            }
+            else if (turns > 0) {
+                let piece = bottom.pop();
+                turns -= piece;
+                bottom.unshift(piece);
+            }
+        }
+    };
+    const slice = () => {
+        let topNum = 0;
+        let bottomNum = 0;
+        let value = 0;
+        for (let i = tops.length; i > 0 && value < 6; i--) {
+            value += tops[i - 1];
+            topNum++;
+        }
+        value = 0;
+        for (let i = 0; i < bottom.length && value < 6; i++) {
+            value += bottom[i];
+            bottomNum++;
+        }
+        const topSlice = tops.splice(tops.length - topNum, tops.length);
+        const bottomSlice = bottom.splice(0, bottomNum);
+        tops = tops.concat(bottomSlice);
+        bottom = topSlice.concat(bottom);
+    };
+    const isLayerAligned = (layer) => {
+        let value = 0;
+        for (let i = 0; i < layer.length && value < 6; i++) {
+            value += layer[i];
+            if (value > 6) {
+                return false;
+            }
+        }
+        return true;
+    };
+    const isMovePossible = (layer, turns) => {
+        if (turns < 0) {
+            // Take off front, put on end
+            while (turns < 0) {
+                let piece = layer.shift();
+                if (piece > Math.abs(turns)) {
+                    return false;
+                }
+                turns += piece;
+                layer.push(piece);
+            }
+            return isLayerAligned(layer);
+        }
+        else if (turns > 0) {
+            // Take off end, put on front
+            while (turns > 0) {
+                let piece = layer.pop();
+                if (turns < piece) {
+                    return false;
+                }
+                turns -= piece;
+                layer.unshift(piece);
+            }
+            return isLayerAligned(layer);
+        }
+        else {
+            // Turns = 0, should be possible
+            return true;
+        }
+    };
+    const possibleMoves = () => {
+        let possibleTop = [];
+        let possibleBottom = [];
+        for (let i = -6; i <= 6; i++) {
+            if (isMovePossible([...tops], i)) {
+                possibleTop.push(i);
+            }
+            if (isMovePossible([...bottom], i)) {
+                possibleBottom.push(i);
+            }
+        }
+        return {
+            possibleTop,
+            possibleBottom
+        };
+    };
+    let turns = [];
+    for (let i = 0; i < numTurns; i++) {
+        let moves = possibleMoves();
+        let topMove = 0;
+        let bottomMove = 0;
+        do {
+            topMove = (0,_util__WEBPACK_IMPORTED_MODULE_1__.randomElement)(moves.possibleTop);
+            bottomMove = (0,_util__WEBPACK_IMPORTED_MODULE_1__.randomElement)(moves.possibleBottom);
+        } while (topMove === 0 && bottomMove === 0);
+        turns.push({
+            top: topMove,
+            bottom: bottomMove
+        });
+        turnTop(topMove);
+        turnBottom(bottomMove);
+        slice();
+    }
+    return turns;
+};
+
+
+/***/ }),
+
+/***/ "./src/util.ts":
+/*!*********************!*\
+  !*** ./src/util.ts ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "randomElement": () => (/* binding */ randomElement),
+/* harmony export */   "shuffle": () => (/* binding */ shuffle)
+/* harmony export */ });
+function randomElement(array) {
+    if (!Array.isArray(array) || array.length < 1) {
+        return null;
+    }
+    return array[Math.floor(Math.random() * array.length)];
+}
+function shuffle(array) {
+    return array.map(value => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ value }) => value);
+}
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+/*!**********************!*\
+  !*** ./src/index.ts ***!
+  \**********************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "cube": () => (/* binding */ cube),
+/* harmony export */   "megaminx": () => (/* binding */ megaminx),
+/* harmony export */   "pyraminx": () => (/* binding */ pyraminx),
+/* harmony export */   "skewb": () => (/* binding */ skewb),
+/* harmony export */   "square1": () => (/* binding */ square1)
+/* harmony export */ });
+/* harmony import */ var _scrambler_scrambler__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./scrambler/scrambler */ "./src/scrambler/scrambler.ts");
+
+const turnToString = (turn) => {
+    const depthLayer = turn.depth > 2 ? `${turn.depth}` : '';
+    const sliceIndicator = turn.depth > 1 ? 'w' : '';
+    return `${depthLayer}${turn.face}${sliceIndicator}${turn.modifier}`;
+};
+const scrambleToString = (turns) => {
+    return turns
+        .map(turn => {
+        if (Array.isArray(turn)) {
+            return scrambleToString(turn) + '\n';
+        }
+        else {
+            return turnToString(turn);
+        }
+    })
+        .join(' ');
+};
+const cube = (size = 3, numTurns = 21) => {
+    return scrambleToString((0,_scrambler_scrambler__WEBPACK_IMPORTED_MODULE_0__.generateCubeScramble)(size, numTurns));
+};
+const megaminx = () => {
+    return scrambleToString((0,_scrambler_scrambler__WEBPACK_IMPORTED_MODULE_0__.generateMegaminxScramble)());
+};
+const pyraminx = (numTurns) => {
+    return scrambleToString((0,_scrambler_scrambler__WEBPACK_IMPORTED_MODULE_0__.generatePyraminxScramble)(numTurns));
+};
+const skewb = (numTurns) => {
+    return scrambleToString((0,_scrambler_scrambler__WEBPACK_IMPORTED_MODULE_0__.generateSkewbScramble)(numTurns));
+};
+const square1 = (numTurns) => {
+    return (0,_scrambler_scrambler__WEBPACK_IMPORTED_MODULE_0__.generateSquare1Scramble)(numTurns)
+        .map((turn) => ` (${turn.top}, ${turn.bottom}) /`)
+        .join('');
+};
+
+})();
+
+/******/ 	return __webpack_exports__;
+/******/ })()
+;
+});
 //# sourceMappingURL=index.js.map
